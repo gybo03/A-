@@ -2,6 +2,7 @@ package com.example.a_asterix;
 
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,27 +10,28 @@ import java.util.Objects;
 
 public class Node {
 
-    public static int max_num_of_connections = 6;
+    public static int max_num_of_connections = 5;
     public static int min_num_of_connections = 2;
     public static int radius = 5;
     public static Color color = Color.rgb(0, 255, 0);
-    public static int strokeWidth = 2;
+    public static Color color_connection;
+    public static int strokeWidth = radius/3;
     private static int id;
     private String name;
     private int coords[] = new int[2];
     private ArrayList<Node> connections;
     private int num_of_connections;
 
-    public Node(Scene scene) {
+    public Node(int x,int y) {
         name = "n" + id++;
-        setRandomCoord(scene);
+        setRandomCoord(x,y);
         connections = new ArrayList<>();
         num_of_connections = 0;
     }
 
-    private void setRandomCoord(Scene scene) {
-        coords[0] = (int) (Math.random() * (scene.getWidth() - 2 * radius)) + radius;
-        coords[1] = (int) (Math.random() * (scene.getHeight() - 2 * radius)) + radius;
+    private void setRandomCoord(int x,int y) {
+        coords[0] = (int) (Math.random() * (x - 2 * radius)) + radius;
+        coords[1] = (int) (Math.random() * (y - 2 * radius)) + radius;
     }
 
     public int distanceFrom2Nodes(Node n) {
