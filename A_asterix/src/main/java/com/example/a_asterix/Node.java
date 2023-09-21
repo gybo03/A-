@@ -10,13 +10,13 @@ import java.util.Objects;
 
 public class Node {
 
-    public static int max_num_of_connections = 5;
-    public static int min_num_of_connections = 2;
-    public static int radius = 5;
-    public static Color color = Color.rgb(0, 255, 0);
+    public static int max_num_of_connections;
+    public static int min_num_of_connections;
+    public static int radius;
+    public static Color color;
     public static Color color_connection;
     public static int strokeWidth = radius/3;
-    private static int id;
+    public static int id;
     private String name;
     private int coords[] = new int[2];
     private ArrayList<Node> connections;
@@ -28,6 +28,8 @@ public class Node {
         connections = new ArrayList<>();
         num_of_connections = 0;
     }
+
+
 
     private void setRandomCoord(int x,int y) {
         coords[0] = (int) (Math.random() * (x - 2 * radius)) + radius;
@@ -82,7 +84,7 @@ public class Node {
         return num_of_connections;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Node{");
         sb.append("cords=");
@@ -97,7 +99,7 @@ public class Node {
         sb.append(", connections=").append(connections == null ? "null" : Arrays.asList(connections).toString());
         sb.append('}');
         return sb.toString();
-    }
+    }*/
 
     public int[] getCoords() {
         return coords;
